@@ -124,7 +124,7 @@
       (try (delete-frame termframe-local t)
            (kill-emacs))))
 
-;; I can't do this
+;; I can't do this. I must link to =q=
 ;; (add-hook 'kill-buffer-hook 'close-local-termframe t)
 
 
