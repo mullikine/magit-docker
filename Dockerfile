@@ -1,13 +1,13 @@
-FROM ubuntu:latest
+FROM silex/emacs:27.0-alpine
 
-RUN apt-get update
-RUN apt-get install -y \
-  git \
-  emacs-nox \
-  elpa-magit \
-  locales
+# RUN apt-get update
+# RUN apt-get install -y \
+#   git \
+#   emacs-nox \
+#   elpa-magit \
+#   locales
 
-RUN locale-gen en_US.UTF-8
+# RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
@@ -24,4 +24,4 @@ RUN rm /startup.el
 RUN mkdir /.ssh
 RUN mkdir /gitrepo; cd gitrepo
 
-CMD cd /gitrepo; emacs --no-window-system --eval '(progn (magit-status) (delete-other-windows))'
+CMD emacs --no-window-system --eval '(progn (magit-status) (delete-other-windows))'
