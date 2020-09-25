@@ -19,3 +19,8 @@
 (let ((gd (locate-dominating-file default-directory ".git")))
   (if gd
       (cd gd)))
+
+(load "/theme.el")
+(enable-theme (intern "magonyx"))
+
+;; (progn  (magit-status) (delete-other-windows))
