@@ -127,6 +127,12 @@
 ;; I can't do this. I must link to =q=
 ;; (add-hook 'kill-buffer-hook 'close-local-termframe t)
 
+(defun kill-emacs-on-scratch ()
+  (interactive)
+  (if (string-equal (buffer-name) "*scratch*")
+      (kill-emacs)))
+(add-hook 'window-configuration-change-hook 'kill-emacs-on-scratch)
+
 
 ;; (use-package magithub
 ;;   :after magit
