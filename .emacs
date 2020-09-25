@@ -95,6 +95,9 @@
 ;; the frame as a parameter
 (add-hook 'after-make-frame-functions 'set-termframe)
 
+(defmacro tryelse (thing &optional otherwise)
+  "Try to run a thing. Run something else if it fails."
+  `(condition-case nil ,thing (error ,otherwise)))
 (defun try-cascade (list-of-alternatives)
   "Try to run a thing. Run something else if it fails."
   ;; (list2str list-of-alternatives)
