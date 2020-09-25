@@ -64,10 +64,12 @@
 (load "/theme.el")
 (enable-theme (intern "magonyx"))
 
-(use-package magithub
-  :after magit
-  :config
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory default-directory))
+
+;; (use-package magithub
+;;   :after magit
+;;   :config
+;;   (magithub-feature-autoinject t)
+;;   (setq magithub-clone-default-directory default-directory))
+
 
 ;; (progn  (magit-status) (delete-other-windows))
