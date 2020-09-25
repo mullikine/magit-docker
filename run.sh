@@ -1,6 +1,10 @@
 #!/bin/bash
 export TTY
 
+slugify() {
+    sed -r "s/[^a-zA-Z0-9]+/-/g" | sed -r "s/^-+\|-+$//g" | tr A-Z a-z
+}
+
 # TODO Use elisp instead
 # cd "$(vc get-top-level)"
 
@@ -23,16 +27,29 @@ case "$sn" in
 esac
 : "${ic:="magit-status"}"
 
+# TODO Create an ssh control socket and use it to run docker on the host
+# ssh to the localhost
+
+user="$(whoami)"
+
 docker \
     run \
+    --env "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+    --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" \
+    --env "DISPLAY=:0" \
+    --privileged \
+    --network=host \
     --rm \
     -v \
+    ~/.gitconfig:/root/.gitconfig \
+    -v \
+    ~/.gitcredentials:/root/.gitcredentials \
+    -v \
     "$(pwd):/$(pwd | slugify)" \
-    --privileged "--network=host" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -w \
     "/$(pwd | slugify)" \
     -ti \
     --entrypoint= \
     vlandeiro-magit-docker-030d5134:1.0 \
-    /bin/sh -c "eval \`resize\` && emacs --no-window-system --eval '(progn ($ic) (delete-other-windows))'"
+    /entry.sh "$ic"
