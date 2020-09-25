@@ -66,6 +66,43 @@
 (load "/theme.el")
 (enable-theme (intern "magonyx"))
 
+(defun variable-p (s)
+  (and (not (eq s nil))
+       (boundp s)))
+
+(defvar termframe nil)
+
+(defun set-termframe (frame)
+  "Frame is obtained from the method which calls this function"
+  ;; (defvar-local termframe (selected-frame))
+  ;; (defvar termframe (selected-frame))
+  ;; (makunbound 'termframe)
+  ;; (message (concat "setting " (str frame) " in " (str newtermbuf)))
+  (message (concat "setting " (str frame)))
+  (with-current-buffer "*scratch*"
+    (setq termframe frame))
+  ;; (message (concat "getting " (str termframe)))
+  ;; (if (variable-p 'newtermbuf)
+  ;;     ;; Sometimes newtermbuf is old
+  ;;     (ignore-errors (with-current-buffer newtermbuf
+  ;;                      (defset termframe frame)
+  ;;                      )))
+  ;; (remove-hook 'after-make-frame-functions 'set-termframe)
+  )
+
+;; this makes it look like this is a regular hook list, which it isn't
+;; The thing which calls the functions in =after-make-frame-functions= also supplies
+;; the frame as a parameter
+(add-hook 'after-make-frame-functions 'set-termframe)
+
+
+(defun close-local-termframe ()
+  ;; (interactive)
+  (if (and (variable-p 'termframe-local)
+           termframe-local)
+      (delete-frame termframe-local t)))
+(add-hook 'kill-buffer-hook 'close-local-termframe t)
+
 
 ;; (use-package magithub
 ;;   :after magit
