@@ -123,7 +123,9 @@
            termframe-local)
       (try (delete-frame termframe-local t)
            (kill-emacs))))
-(add-hook 'kill-buffer-hook 'close-local-termframe t)
+
+;; I can't do this
+;; (add-hook 'kill-buffer-hook 'close-local-termframe t)
 
 
 ;; (use-package magithub
