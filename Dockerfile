@@ -19,10 +19,11 @@ ENV EMACS_BRANCH="master"
 ENV EMACS_VERSION="master"
 
 COPY startup.el /startup.el
+COPY theme.el /theme.el
 COPY .emacs /root/.emacs
 COPY .bashrc /root/.bashrc
 
-RUN emacs --batch -l /startup.el
+RUN emacs --batch -l /startup.el -l /theme.el
 RUN rm /startup.el
 RUN mkdir /.ssh
 
