@@ -28,6 +28,8 @@ docker \
     --rm \
     -v \
     "$(pwd):/$(pwd | slugify)" \
+    --privileged "--network=host" \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     -w \
     "/$(pwd | slugify)" \
     -ti \
