@@ -1,7 +1,10 @@
 #!/bin/bash
 export TTY
 
-cd "$(vc get-top-level)"
+# TODO Use elisp instead
+# cd "$(vc get-top-level)"
+
+# TODO Select emacs program based on name
 
 docker \
     run \
