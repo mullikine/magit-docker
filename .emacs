@@ -62,6 +62,7 @@
       (cd gd)))
 
 (load "/theme.el")
+(load "/my-shackle.el")
 (enable-theme (intern "magonyx"))
 
 

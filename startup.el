@@ -10,4 +10,5 @@
 (package-install 'magithub nil)
 (package-install 'docker nil)
 (package-install 'xclip nil)
+(package-install 'shackle nil)
 (package-install 'helm nil)
