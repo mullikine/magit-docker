@@ -108,6 +108,9 @@
            (setq result (eval p))
            (throw 'bbb result))
          result)))))
+(defmacro try-cascade-sugar (&rest list-of-alternatives)
+       "Try to run a thing. Run something else if it fails."
+       `(try-cascade '(,@list-of-alternatives)))
 (defalias 'try 'try-cascade-sugar)
 
 
