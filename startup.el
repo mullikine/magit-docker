@@ -7,4 +7,5 @@
 (package-initialize)
 (package-refresh-contents)
 (package-install 'magit nil)
+(package-install 'magithub nil)
 (package-install 'helm nil)
