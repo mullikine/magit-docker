@@ -95,12 +95,28 @@
 ;; the frame as a parameter
 (add-hook 'after-make-frame-functions 'set-termframe)
 
+(defun try-cascade (list-of-alternatives)
+  "Try to run a thing. Run something else if it fails."
+  ;; (list2str list-of-alternatives)
+
+  (catch 'bbb
+    (dolist (p list-of-alternatives)
+      ;; (message "%s" (list2str p))
+      (let ((result nil))
+        (tryelse
+         (progn
+           (setq result (eval p))
+           (throw 'bbb result))
+         result)))))
+(defalias 'try 'try-cascade-sugar)
+
 
 (defun close-local-termframe ()
   ;; (interactive)
   (if (and (variable-p 'termframe-local)
            termframe-local)
-      (delete-frame termframe-local t)))
+      (try (delete-frame termframe-local t)
+           (kill-emacs))))
 (add-hook 'kill-buffer-hook 'close-local-termframe t)
 
 
@@ -112,3 +128,6 @@
 
 
 ;; (progn  (magit-status) (delete-other-windows))
+
+
+(setq termframe (selected-frame))
