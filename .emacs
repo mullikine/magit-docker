@@ -31,7 +31,7 @@
 (defun xsel-cut-function (text &optional push)
   (with-temp-buffer
     (insert text)
-    (call-process-region (point-min) (point-max) "xclip" nil 0 nil "--i")))
+    (call-process-region (point-min) (point-max) "xclip" nil 0 nil "-i")))
 
 (defun xsel-paste-function ()
 
