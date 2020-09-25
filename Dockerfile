@@ -28,4 +28,4 @@ RUN emacs --batch -l /startup.el -l /theme.el
 RUN rm /startup.el
 RUN mkdir /.ssh
 
-CMD eval `resize` && emacs --no-window-system --eval '(progn (load "/theme.el") (enable-theme 'magonyx) (magit-status) (delete-other-windows))'
+CMD eval `resize` && emacs --no-window-system --eval '(progn (load "/theme.el") (enable-theme (intern "magonyx")) (magit-status) (delete-other-windows))'
