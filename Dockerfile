@@ -25,6 +25,7 @@ ENV TERM=screen-256color
 COPY startup.el /startup.el
 COPY theme.el /theme.el
 COPY entry.sh /entry.sh
+COPY my-shackle.el /my-shackle.el
 COPY .emacs /root/.emacs
 COPY .bashrc /root/.bashrc
 
