@@ -1,5 +1,8 @@
 FROM silex/emacs:27.0-alpine
 
+RUN apk update
+RUN apk add git
+
 # RUN apt-get update
 # RUN apt-get install -y \
 #   git \
