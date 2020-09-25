@@ -1,4 +1,4 @@
-;;; soft-morning-theme.el --- Theme 
+;;; magonyx-theme.el --- Theme 
 
 ;; Copyright (C) 2020 , 
 
@@ -27,28 +27,28 @@
 
 ;;; Code:
 
- (deftheme soft-morning)
+ (deftheme magonyx)
  (let ((class '((class color) (min-colors 89)))
-       (fg1 "#282828")
-       (fg2 "#393939")
-       (fg3 "#4a4a4a")
-       (fg4 "#5c5c5c")
-       (bg1 "#f2f1f0")
-       (bg2 "#dfdedd")
-       (bg3 "#cbcaca")
-       (bg4 "#b8b7b6")
-       (builtin "#727170")
-       (keyword "#8aa234")
-       (const   "#f03f3f")
-       (comment "#808080")
-       (func    "#a82e4d")
-       (str     "#3450a2")
-       (type    "#727170")
-       (var     "#f03f3f")
-       (warning "#ff6523")
-       (warning2 "#e80f29"))
+       (fg1 "#c7c7c7")
+       (fg2 "#b7b7b7")
+       (fg3 "#a7a7a7")
+       (fg4 "#979797")
+       (bg1 "#353839")
+       (bg2 "#454849")
+       (bg3 "#555859")
+       (bg4 "#656869")
+       (builtin "#cbb021")
+       (keyword "#9ec065")
+       (const   "#eca661")
+       (comment "#5d5d5d")
+       (func    "#75b7ff")
+       (str     "#5ba2b1")
+       (type    "#ff909d")
+       (var     "#e69ae8")
+       (warning "#e81050")
+       (warning2 "#e86310"))
    (custom-theme-set-faces
-   'soft-morning
+   'magonyx
         `(default ((,class (:background ,bg1 :foreground ,fg1))))
         `(font-lock-builtin-face ((,class (:foreground ,builtin))))
         `(font-lock-comment-face ((,class (:foreground ,comment))))
@@ -246,10 +246,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'soft-morning)
+(provide-theme 'magonyx)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; soft-morning-theme.el ends here
+;;; magonyx-theme.el ends here

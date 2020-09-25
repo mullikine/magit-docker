@@ -17,6 +17,7 @@ ENV LC_ALL en_US.UTF-8
 
 ENV EMACS_BRANCH="master"
 ENV EMACS_VERSION="master"
+ENV TERM=screen-256color
 
 COPY startup.el /startup.el
 COPY theme.el /theme.el
@@ -27,4 +28,4 @@ RUN emacs --batch -l /startup.el -l /theme.el
 RUN rm /startup.el
 RUN mkdir /.ssh
 
-CMD eval `resize` && emacs --no-window-system --eval '(progn (magit-status) (delete-other-windows))'
+CMD eval `resize` && emacs --no-window-system --eval '(progn (load "/theme.el") (enable-theme 'magonyx) (magit-status) (delete-other-windows))'
