@@ -25,6 +25,5 @@ COPY .bashrc /root/.bashrc
 RUN emacs --batch -l /startup.el
 RUN rm /startup.el
 RUN mkdir /.ssh
-RUN mkdir /gitrepo; cd gitrepo
 
-CMD emacs --no-window-system --eval '(progn (magit-status) (delete-other-windows))'
+CMD eval `resize` && emacs --no-window-system --eval '(progn (magit-status) (delete-other-windows))'
